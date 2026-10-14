@@ -23,10 +23,19 @@ def deserialize_from_xml(filename):
     """deserialize xml to python dictionary"""
     dictionary = {}
 
-    tree = ET.parse("filename")
+    tree = ET.parse(filename)
     root = tree.getroot()
 
     for child in root:
-        dictionary[child.tag] = child.text
+        dictionary[child.tag] = _convert(child.text)
 
     return dictionary
+
+def _convert(text):
+    """Convert XML text to int or float when possible"""
+    for kind in (int, float):
+        try:
+            return kind(text)
+        except (TypeError, ValueError):
+            continue
+    return text

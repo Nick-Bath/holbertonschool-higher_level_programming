@@ -18,11 +18,12 @@ def serialize_to_xml(dictionary, filename):
 
     tree.write(filename, encoding="utf-8", xml_declaration=True)
 
+
 def deserialize_from_xml(filename):
     """deserialize xml to python dictionary"""
     dictionary = {}
 
-    tree = ET.parse("data.xml")
+    tree = ET.parse("filename")
     root = tree.getroot()
 
     for child in root:

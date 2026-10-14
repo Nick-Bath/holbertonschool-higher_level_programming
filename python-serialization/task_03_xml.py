@@ -28,11 +28,10 @@ def deserialize_from_xml(filename):
     root = tree.getroot()
 
     for child in root:
-        dictionary[child.tag] = _convert(child.text)
+        dictionary[child.tag] = child.text
 
     return dictionary
 
-def _convert(text):
     """Convert XML text to int or float when possible"""
     for kind in (int, float):
         try:

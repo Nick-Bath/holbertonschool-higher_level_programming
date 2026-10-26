@@ -1,4 +1,4 @@
-#!/usr/bin/python3 venv
+#!/usr/bin/python3
 
 import MySQLdb
 import sys
@@ -7,13 +7,12 @@ import sys
 """Module: list all states"""
 
 
-def list_all_states(username, password, name):
-    """Lists all rows"""
+if __name__ == "__main__":
     db = MySQLdb.connect(host="localhost",
                          port=3306,
-                         user=username,
-                         passwd=password,
-                         db=name)
+                         user=sys.argv[1],
+                         passwd=sys.argv[2],
+                         db=sys.argv[3])
 
     cur = db.cursor()
 
@@ -23,7 +22,3 @@ def list_all_states(username, password, name):
 
     cur.close()
     db.close()
-
-
-if __name__ == "__main__":
-    list_all_states(sys.argv[1], sys.argv[2], sys.argv[3])

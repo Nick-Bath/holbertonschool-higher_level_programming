@@ -21,9 +21,8 @@ if __name__ == "__main__":
         passwd=MY_PASS,
         db=MY_DB
         )
-    cursor = db.cursor()
     cur = db.cursor()
-    cur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+    cur.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC")
     for row in cur.fetchall():
         print(row)
 

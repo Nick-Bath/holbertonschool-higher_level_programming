@@ -17,8 +17,10 @@ if __name__ == "__main__":
     cur = db.cursor()
     cur.execute(
         """
-        SELECT id, name
+        SELECT cities.id, cities.name, states.name
         FROM cities
+        JOIN states
+        ON cities.state_id = states.id
         ORDER BY id;
         """,)
 

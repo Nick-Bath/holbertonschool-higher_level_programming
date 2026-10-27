@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-Lists all states from db
+Lists all states from database
 """
 
 import MySQLdb

@@ -14,6 +14,5 @@ if __name__ == "__main__":
         sys.argv[1], sys.argv[2], sys.argv[3]), pool_pre_ping=True)
 
     with Session(engine) as session:
-        statement = select(State).order_by(State.id)
-        for state in session.scalars(statement).all():
+        for state in session.query(State).order_by(State.id).all():
             print("{}: {}".format(state.id, state.name))

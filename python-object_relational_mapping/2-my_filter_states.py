@@ -19,7 +19,7 @@ if __name__ == "__main__":
         """
         SELECT *
         FROM states
-        WHERE name = %s
+        WHERE name = '{}'
         ORDER BY id;
         """.format(sys.argv[4]))
 

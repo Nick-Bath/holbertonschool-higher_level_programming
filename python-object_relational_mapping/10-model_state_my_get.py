@@ -14,11 +14,10 @@ if __name__ == "__main__":
         pool_pre_ping=True,
     )
 
-    input = str(sys.argv[4])
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    all_states = session.query(State).filter(State.name.like(input)).order_by(
+    all_states = session.query(State).filter(State.name == sys.argv[4]).order_by(
         State.id).all()
     if not all_states:
         print("Not Found")

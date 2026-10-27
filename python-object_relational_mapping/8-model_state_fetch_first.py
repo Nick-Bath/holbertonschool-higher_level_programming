@@ -13,8 +13,8 @@ if __name__ == "__main__":
         sys.argv[1], sys.argv[2], sys.argv[3]), pool_pre_ping=True)
 
     with Session(engine) as session:
-        statement = session.query(State).order_by(State).first()
-        if statement is None:
+        state = session.query(State).order_by(State.id).first()
+        if state is None:
             print("Nothing")
-        for state in statement:
+        else:
             print("{}: {}".format(state.id, state.name))

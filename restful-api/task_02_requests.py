@@ -22,7 +22,7 @@ def fetch_and_save_posts():
     '''fetches and saves posts to csv'''
     post_list = []
     response = requests.get("https://jsonplaceholder.typicode.com/posts")
-    if response.ok:
+    if response.status_code == 200:
         posts = response.json()
         for post in posts:
             post_dict = {
@@ -32,9 +32,9 @@ def fetch_and_save_posts():
             }
             post_list.append(post_dict)
 
-    if post_list:
-        keys = post_list[0].keys()
-        with open("posts.csv", mode='w', newline="", encoding='utf-8') as f:
-            dict_writer = csv.DictWriter(f, fieldnames=keys)
-            dict_writer.writeheader()
-            dict_writer.writerows(post_list)
+        if post_list:
+            keys = post_list[0].keys()
+            with open("posts.csv", mode='w', newline="", encoding='utf-8') as f:
+                dict_writer = csv.DictWriter(f, fieldnames=keys)
+                dict_writer.writeheader()
+                dict_writer.writerows(post_list)

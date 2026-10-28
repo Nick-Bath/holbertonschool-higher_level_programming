@@ -4,8 +4,7 @@ from flask import Flask, jsonify, request
 app = Flask(__name__)
 app.json.sort_keys = False
 
-users = {"jane": {"name": "Jane", "age": 28, "city": "Los Angeles"},
-         "Nick": {"name": "Jane", "age": 28, "city": "Los Angeles"}}
+users = {}
 
 @app.route("/") 
 def home():

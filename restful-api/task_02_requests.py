@@ -11,7 +11,7 @@ import csv
 def fetch_and_print_posts():
     '''fetches and prints posts'''
     fetch = requests.get("https://jsonplaceholder.typicode.com/posts")
-    print(fetch.status_code)
+    print(f"Status Code: {fetch.status_code}")
     if fetch.ok:
         data = fetch.json()
         for post in data:

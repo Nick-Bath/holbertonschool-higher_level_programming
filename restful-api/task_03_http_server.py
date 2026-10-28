@@ -40,7 +40,7 @@ class MyRequestHandler(BaseHTTPRequestHandler):
             self.send_header("Content-type", "text/plain")
             self.end_headers()
 
-            message = f"Page not found"
+            message = "Endpoint not found"
             self.wfile.write(bytes(message, 'utf8'))
 
 

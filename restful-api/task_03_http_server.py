@@ -2,6 +2,7 @@
 
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import socketserver
+import json
 
 class MyRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -22,7 +23,7 @@ class MyRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
 
             message = f"{data}"
-            self.wfile.write(bytes(message, "utf8"))
+            self.wfile.write(json.dumps(data).encode("utf8"))
 
         elif self.path == "/status":
             self.send_response(200)

@@ -12,10 +12,10 @@ def generate_invitations(template_content, attendees):
         raise TypeError("attendees must be a list of dictionaries")
 
     if not template_content:
-        raise ValueError("template must not be empty")
+        raise ValueError("Template is empty, no output files generated.")
 
     if not attendees:
-        raise ValueError("attendees must not be empty")
+        raise ValueError("No data provided, no output files generated.")
 
     i = 0
     for dic in attendees:
@@ -28,5 +28,5 @@ def generate_invitations(template_content, attendees):
                 with open(f"output_{i}.txt", 'w') as file:
                     file.write(output)
             except OSError:
-                    print(f"could not write to output_{i}.txt")
-                    raise SystemExit(1)
+                print(f"could not write to output_{i}.txt")
+                raise SystemExit(1)

@@ -25,7 +25,7 @@ def items_display():
         
     return render_template('items.html', items=items)
 
-@app.route('/product_display')
+@app.route('/products')
 def product_display():
     source = request.args.get('source')
     product_id = request.args.get('id')

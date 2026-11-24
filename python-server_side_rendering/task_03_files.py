@@ -44,6 +44,8 @@ def product_display():
         for product in products:
             if str(product['id']) == product_id:
                 data.append(product)
+            else:
+                return render_template('product_display.html', error='Product not found')
     else:
         data = products
                 

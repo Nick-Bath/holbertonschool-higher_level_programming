@@ -19,9 +19,11 @@ def contact():
 @app.route('/items')
 def items_display():
     with open('items.json', 'r', encoding='utf-8') as file:
-        data = json.load(file)["items"]
+        data = json.load(file)
+
+    items = data.get('items', [])
         
-    return render_template('items.html', items=data)
+    return render_template('items.html', items=items)
 
 @app.route('/product_display')
 def product_display():

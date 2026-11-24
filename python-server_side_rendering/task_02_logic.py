@@ -16,6 +16,13 @@ def about():
 def contact():
     return render_template('contact.html')
 
+@app.route('/items')
+def items_display():
+    with open('items.json', 'r', encoding='utf-8') as file:
+        data = json.load(file)["items"]
+        
+    return render_template('items.html', items=data)
+
 @app.route('/product_display')
 def product_display():
     source = request.args.get('source')
